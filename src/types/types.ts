@@ -11,11 +11,17 @@ export interface MeetingInfo {
 
 interface Student {
     name: string,
-    attendance: boolean
+    attendance: boolean,
+    paying: number
+}
+
+interface Tutor {
+    name: string,
+    rate: number
 }
 
 interface Attendeees {
-    tutors: string[],
+    tutors: Tutor[],
     students: Student[]
 }
 

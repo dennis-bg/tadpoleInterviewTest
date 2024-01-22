@@ -11,28 +11,36 @@
     },
     "participants": {
         "tutors": [
-            "Marie Curie"
+            {
+                "name": "Marie Curie",
+                "rate": 45
+            }
         ],
         "students": [
             {
                 "name": "Will Ferrell",
-                "attendance": true
+                "attendance": true,
+                "paying": 45
             },
             {
                 "name": "Bruno Mars",
-                "attendance": true
+                "attendance": true,
+                "paying": 25
             },
             {
                 "name": "Elizabeth W.",
-                "attendance": true
+                "attendance": true,
+                "paying": 15
             },
             {
                 "name": "Katy Perry",
-                "attendance": true
+                "attendance": true,
+                "paying": 45
             },
             {
                 "name": "Lewis Hamilton",
-                "attendance": true
+                "attendance": true,
+                "paying": 45
             }
         ]
     }
