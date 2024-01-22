@@ -1,4 +1,4 @@
-interface MeetingInfo {
+export interface MeetingInfo {
     title: string,
     subject: string,
     date: string,
