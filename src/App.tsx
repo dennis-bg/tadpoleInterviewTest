@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import meetingDetails from './fixtures/meetingDetails.json'
 
 import './App.css';
-import { MeetingModal } from './MeetingModal';
+import { MeetingModal } from './components/MeetingModal';
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
 
   return (
     <div>
-      <MeetingModal open={isModalOpen}/>
+      <MeetingModal open={isModalOpen} meetingDetails={meetingDetails}/>
     </div>
   );
 }

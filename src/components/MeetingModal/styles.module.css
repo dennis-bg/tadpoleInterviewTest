@@ -1,0 +1,14 @@
+.meetingDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info {
+    width: 65%
+}
+
+.people {
+    width: 30%;
+}
+

@@ -6,7 +6,9 @@ export const MyModal = ({children}) => {
         <div className={styles.mask}>
             <div className={styles.modal}>
                 <div className={styles.header}></div>
-                {children}
+                <div className={styles.body}>
+                    {children}
+                </div>
             </div>
         </div>
     )
