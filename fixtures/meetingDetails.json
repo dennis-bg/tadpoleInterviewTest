@@ -1,0 +1,39 @@
+{
+    "info": {
+        "title": "Meeting Title",
+        "subject": "Algebra II",
+        "date": "April 14th",
+        "startTime": "7:30pm",
+        "endTime": "8:30pm",
+        "endDate": "10/28",
+        "repitition": "every 7 days",
+        "location": "Classroom 400, Ryder Hall, Northeastern University"
+    },
+    "people": {
+        "tutors": [
+            "Marie Curie"
+        ],
+        "students": [
+            {
+                "name": "Will Ferrell",
+                "attendance": true
+            },
+            {
+                "name": "Bruno Mars",
+                "attendance": true
+            },
+            {
+                "name": "Elizabeth W.",
+                "attendance": true
+            },
+            {
+                "name": "Katy Perry",
+                "attendance": true
+            },
+            {
+                "name": "Lewis Hamilton",
+                "attendance": true
+            }
+        ]
+    }
+}
