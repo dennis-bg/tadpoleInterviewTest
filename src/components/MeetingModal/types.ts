@@ -21,5 +21,5 @@ interface Attendeees {
 
 export interface MeetingDetails {
     info: MeetingInfo,
-    people: Attendeees
+    participants: Attendeees
 }
