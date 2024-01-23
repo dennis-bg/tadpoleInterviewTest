@@ -1,0 +1,26 @@
+.circle {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    font: 'Futura';
+}
+
+.tutor {
+    color: #5D7EF2;
+}
+
+.student {
+    color: #00DC77CC;
+}
