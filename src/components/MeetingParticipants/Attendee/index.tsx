@@ -16,6 +16,7 @@ interface AttendeeProps {
     showRate: boolean;
     type: Attendee;
     newAttendee: boolean;
+    removeAttendee?: (attendee: string) => void;
     newName?: string;
     handleNameChange?: (e: { target: { value: React.SetStateAction<string>; }; }) => void;
     handleSaveAttendee?: () => void;
@@ -27,6 +28,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
     showRate,
     type,
     newAttendee,
+    removeAttendee,
     newName,
     handleNameChange,
     handleSaveAttendee
@@ -54,7 +56,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
                         <span>/hr</span>
                     </div>;
                 } else {
-                    return <RemoveSVG/>
+                    return <div onClick={() => removeAttendee && removeAttendee(name)}><RemoveSVG/></div>
                 }
             }
             else if(showRate) {

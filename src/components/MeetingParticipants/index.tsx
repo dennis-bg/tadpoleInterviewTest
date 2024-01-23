@@ -15,10 +15,12 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
     students,
     tutors
 }) => {
+    
+    const { editMode } = useContext(EditModeContext);
 
     const [view, setView] = useState<View>(View.Attendance);
-    const [stagedStudents, setStagedstagedStudents] = useState<Student[]>(students);
-    const [stagedTutors, setStagedstagedTutors] = useState<IAttendee[]>(tutors);
+    const [stagedStudents, setStagedStudents] = useState<Student[]>(students);
+    const [stagedTutors, setStagedTutors] = useState<IAttendee[]>(tutors);
 
     const addStudent = (student: string) => {
         const newStudent = {
@@ -26,7 +28,11 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
             attendance: false,
             rate: 0
         }
-        setStagedstagedStudents([...stagedStudents, newStudent]);
+        setStagedStudents([...stagedStudents, newStudent]);
+    }
+
+    const removeStudent = (studentName: string) => {
+        setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
     }
 
     const addTutor = (tutor: string) => {
@@ -34,10 +40,12 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
             name: tutor,
             rate: 0
         }
-        setStagedstagedTutors([...stagedTutors, newTutor])
+        setStagedTutors([...stagedTutors, newTutor])
     }
 
-    const { editMode } = useContext(EditModeContext);
+    const removeTutor = (tutorName: string) => {
+        setStagedTutors(stagedTutors.filter(tutor => tutor.name !== tutorName))
+    }
 
     const handleSwitchChange = (checked: boolean) => {
         if(checked){
@@ -73,6 +81,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                                 showRate={view === View.Pricing}
                                 type={Attendee.Tutor}
                                 newAttendee={false}
+                                removeAttendee={removeTutor}
                             />
                         </li>
                     )}
@@ -93,6 +102,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                                 showRate={view === View.Pricing}
                                 type={Attendee.Student}
                                 newAttendee={false}
+                                removeAttendee={removeStudent}
                             />
                         </li>
                     )}
