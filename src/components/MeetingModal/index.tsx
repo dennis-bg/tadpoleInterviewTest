@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MyModal } from "../common/MyModal";
-import { MeetingDetails } from "../../types/types";
+import { IAttendee, MeetingDetails, Student } from "../../types/types";
 import styles from './styles.module.css'
 import { MeetingInfoCard } from "../MeetingInfo";
 import { MeetingParticipants } from "../MeetingParticipants";
@@ -14,6 +14,8 @@ interface MeetingModalProps {
 export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails }) => {
 
     const [editMode, setEditMode] = useState<boolean>(true);
+    const [students, setStudents] = useState<Student[]>(meetingDetails.participants.students);
+    const [tutors, setTutors] = useState<IAttendee[]>(meetingDetails.participants.tutors);
 
     const ctxValue = {
         editMode,
@@ -38,8 +40,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                         tutors={meetingDetails.participants.tutors.length}
                     />
                     <MeetingParticipants 
-                        students={meetingDetails.participants.students} 
-                        tutors={meetingDetails.participants.tutors}
+                        students={students} 
+                        tutors={tutors}
                     />
                 </div>
             </EditModeContext.Provider>

@@ -15,7 +15,7 @@ export interface IAttendee {
     rate: number
 }
 
-interface Student extends IAttendee{
+export interface Student extends IAttendee{
     attendance: boolean,
 }
 

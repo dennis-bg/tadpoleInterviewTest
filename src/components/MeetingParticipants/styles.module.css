@@ -44,10 +44,6 @@
     padding-right: 50px;
 }
 
-.switch {
-    color: #31E190;
-}
-
 .subTitle{
     display: flex;
     flex-direction: row;

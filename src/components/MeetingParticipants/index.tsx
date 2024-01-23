@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styles from './styles.module.css'
-import { Attendeees } from "../../types/types";
+import { Attendeees, IAttendee, Student } from "../../types/types";
 import { Switch } from "antd";
 import { AttendeeItem, Attendee } from "./Attendee";
 import { EditModeContext } from "../../store/edit-mode-context";
@@ -15,7 +15,9 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
     tutors
 }) => {
 
-    const [view, setView] = useState<View>(View.Attendance)
+    const [view, setView] = useState<View>(View.Attendance);
+    const [stagedStudents, setStagedstagedStudents] = useState<Student[]>(students);
+    const [stagedTutors, setStagedstagedTutors] = useState<IAttendee[]>(tutors);
 
     const { editMode } = useContext(EditModeContext);
 
@@ -36,7 +38,6 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     checked={view !== View.Attendance}
                     onChange={handleSwitchChange}
                     size={"small"}
-                    className={styles.switch}
                 />
                 <p>Pricing</p>
             </div>
@@ -46,7 +47,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     {view === View.Pricing && <p>Recieving</p>}
                 </div>
                 <ul>
-                    {tutors.map(tutor => 
+                    {stagedTutors.map(tutor => 
                         <li key={tutor.name}>
                             <AttendeeItem
                                 name={tutor.name}
@@ -57,12 +58,12 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                             />
                         </li>
                     )}
-                    {editMode && 
+                    {editMode && view === View.Attendance &&
                         <li>
                             <AttendeeItem
                                 name={''}
                                 rate={0}
-                                showRate={view === View.Pricing}
+                                showRate={false}
                                 type={Attendee.Tutor}
                                 newAttendee={true}
                             />
@@ -74,7 +75,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     <p>{view === View.Attendance ? 'Attendance' : 'Paying'}</p>
                 </div>
                 <ul>
-                    {students.map(student => 
+                    {stagedStudents.map(student => 
                         <li key={student.name}>
                             <AttendeeItem
                                 name={student.name}
@@ -85,12 +86,12 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                             />
                         </li>
                     )}
-                    {editMode && 
+                    {editMode && view === View.Attendance &&
                         <li>
                             <AttendeeItem
                                 name={''}
                                 rate={0}
-                                showRate={view === View.Pricing}
+                                showRate={false}
                                 type={Attendee.Student}
                                 newAttendee={true}
                             />
