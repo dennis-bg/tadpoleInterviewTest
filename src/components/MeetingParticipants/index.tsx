@@ -4,6 +4,7 @@ import { Attendeees, IAttendee, Student } from "../../types/types";
 import { Switch } from "antd";
 import { AttendeeItem, Attendee } from "./Attendee";
 import { EditModeContext } from "../../store/edit-mode-context";
+import { NewAttendee } from "./NewAttendee";
 
 enum View {
     Attendance,
@@ -18,6 +19,23 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
     const [view, setView] = useState<View>(View.Attendance);
     const [stagedStudents, setStagedstagedStudents] = useState<Student[]>(students);
     const [stagedTutors, setStagedstagedTutors] = useState<IAttendee[]>(tutors);
+
+    const addStudent = (student: string) => {
+        const newStudent = {
+            name: student,
+            attendance: false,
+            rate: 0
+        }
+        setStagedstagedStudents([...stagedStudents, newStudent]);
+    }
+
+    const addTutor = (tutor: string) => {
+        const newTutor = {
+            name: tutor,
+            rate: 0
+        }
+        setStagedstagedTutors([...stagedTutors, newTutor])
+    }
 
     const { editMode } = useContext(EditModeContext);
 
@@ -59,15 +77,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                         </li>
                     )}
                     {editMode && view === View.Attendance &&
-                        <li>
-                            <AttendeeItem
-                                name={''}
-                                rate={0}
-                                showRate={false}
-                                type={Attendee.Tutor}
-                                newAttendee={true}
-                            />
-                        </li>
+                        <NewAttendee type={Attendee.Tutor} addAttendee={addTutor}/>
                     }
                 </ul>
                 <div className={styles.subTitle}>
@@ -87,15 +97,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                         </li>
                     )}
                     {editMode && view === View.Attendance &&
-                        <li>
-                            <AttendeeItem
-                                name={''}
-                                rate={0}
-                                showRate={false}
-                                type={Attendee.Student}
-                                newAttendee={true}
-                            />
-                        </li>
+                        <NewAttendee type={Attendee.Student} addAttendee={addStudent}/>
                     }
                 </ul>
             </div>

@@ -15,7 +15,10 @@ export enum Attendee {
 interface AttendeeProps {
     showRate: boolean;
     type: Attendee;
-    newAttendee: boolean
+    newAttendee: boolean;
+    newName?: string;
+    handleNameChange?: (e: { target: { value: React.SetStateAction<string>; }; }) => void;
+    handleSaveAttendee?: () => void;
 }
 
 export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({ 
@@ -23,7 +26,10 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
     rate, 
     showRate,
     type,
-    newAttendee
+    newAttendee,
+    newName,
+    handleNameChange,
+    handleSaveAttendee
 }) => {
 
     const { editMode } = useContext(EditModeContext); 
@@ -43,8 +49,6 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
                             value={rate}
                             variant="borderless"
                             size="small"
-                            // prefix="$ "
-                            // suffix=" /hr"
                             style={{borderBottom: "1px solid #31E190", width: '30px'}}
                         />
                         <span>/hr</span>
@@ -65,17 +69,29 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
         } 
     }
 
+    const handleClick = () => {
+        if(!newAttendee) return;
+        if(handleSaveAttendee){
+            handleSaveAttendee();
+        }
+    }
+
     return (
         <div className={styles.tutor}>
-            <InitialIcon 
-                first={names[0].charAt(0)} 
-                last={names[names.length-1].charAt(0)} 
-                type={type}
-                newAttendee={newAttendee}
-            />
+            <div onClick={handleClick}>
+                <InitialIcon 
+                    first={names[0].charAt(0)} 
+                    last={names[names.length-1].charAt(0)} 
+                    type={type}
+                    newAttendee={newAttendee}
+                    
+                />
+            </div>
             <div className={styles.details}>
                 {newAttendee 
                     ? <Input
+                        value={newName}
+                        onChange={handleNameChange}
                         placeholder={`Add ${type === Attendee.Student ? 'Student' : 'Tutor'}`} 
                         variant="borderless"
                     />
