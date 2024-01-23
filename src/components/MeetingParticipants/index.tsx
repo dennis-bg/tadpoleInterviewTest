@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from './styles.module.css'
 import { Attendeees } from "../../types/types";
 import { Switch } from "antd";
+import { AttendeeItem, Attendee } from "./Attendee";
 
 enum View {
     Attendance,
@@ -42,14 +43,32 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     {view === View.Pricing && <p>Recieving</p>}
                 </div>
                 <ul>
-                    {tutors.map(tutor => <li>{tutor.name}</li>)}
+                    {tutors.map(tutor => 
+                        <li key={tutor.name}>
+                            <AttendeeItem
+                                name={tutor.name}
+                                rate={tutor.rate}
+                                showRate={view === View.Pricing}
+                                type={Attendee.Tutor}
+                            />
+                        </li>
+                    )}
                 </ul>
                 <div className={styles.subTitle}>
                     <h2>Students</h2>
                     <p>{view === View.Attendance ? 'Attendance' : 'Paying'}</p>
                 </div>
                 <ul>
-                    {students.map(student => <li>{student.name}</li>)}
+                    {students.map(student => 
+                        <li key={student.name}>
+                            <AttendeeItem
+                                name={student.name}
+                                rate={student.rate}
+                                showRate={view === View.Pricing}
+                                type={Attendee.Student}
+                            />
+                        </li>
+                    )}
                 </ul>
             </div>
         </div>

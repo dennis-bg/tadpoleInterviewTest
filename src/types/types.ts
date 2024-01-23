@@ -9,19 +9,18 @@ export interface MeetingInfo {
     location: string
 }
 
-interface Student {
-    name: string,
-    attendance: boolean,
-    paying: number
-}
 
-interface Tutor {
+export interface IAttendee {
     name: string,
     rate: number
 }
 
+interface Student extends IAttendee{
+    attendance: boolean,
+}
+
 export interface Attendeees {
-    tutors: Tutor[],
+    tutors: IAttendee[],
     students: Student[]
 }
 

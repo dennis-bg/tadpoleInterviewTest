@@ -1,15 +1,16 @@
 import React from "react";
 import styles from './styles.module.css'
+import { Attendee } from "../../MeetingParticipants/Attendee";
 
-export enum Participant {
-    Student,
-    Tutor
-}
+// export enum Participant {
+//     Student,
+//     Tutor
+// }
 
 interface InitialIconProps {
     first: string;
     last: string;
-    type: Participant
+    type: Attendee
 }
 
 export const InitialIcon: React.FC<InitialIconProps> = ({ 
@@ -19,7 +20,7 @@ export const InitialIcon: React.FC<InitialIconProps> = ({
  }) => {
     return (
         <div className={styles.circle}>
-            <p className={type === Participant.Student ? styles.student : styles.tutor}>{first}{last}</p>
+            <p className={type === Attendee.Student ? styles.student : styles.tutor}>{first}{last}</p>
         </div>
     )
 }

@@ -1,0 +1,29 @@
+.tutor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+
+.details p {
+    font: 'FuturaPT';
+    font-weight: 450;
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.details span {
+    font: 'FuturaPT';
+    font-size: 12px;
+    font-weight: 450;
+}

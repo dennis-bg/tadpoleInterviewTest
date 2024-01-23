@@ -20,27 +20,27 @@
             {
                 "name": "Will Ferrell",
                 "attendance": true,
-                "paying": 45
+                "rate": 45
             },
             {
                 "name": "Bruno Mars",
                 "attendance": true,
-                "paying": 25
+                "rate": 25
             },
             {
                 "name": "Elizabeth W.",
                 "attendance": true,
-                "paying": 15
+                "rate": 15
             },
             {
                 "name": "Katy Perry",
                 "attendance": true,
-                "paying": 45
+                "rate": 45
             },
             {
                 "name": "Lewis Hamilton",
                 "attendance": true,
-                "paying": 45
+                "rate": 45
             }
         ]
     }
