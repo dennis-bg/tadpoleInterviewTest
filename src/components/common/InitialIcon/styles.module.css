@@ -9,6 +9,28 @@
     align-items: center;
 }
 
+.newStudentCircle {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #31E190;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newTutorCircle {
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #5D7EF2;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .circle p {
     margin: 0;
     font-size: 12px;
@@ -21,6 +43,14 @@
     color: #5D7EF2;
 }
 
+.newTutor {
+    color: black;
+}
+
 .student {
-    color: #00DC77CC;
+    color: #31E190;
+}
+
+.newStudent {
+    color: black;
 }

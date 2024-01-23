@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from './styles.module.css'
 import { Attendeees } from "../../types/types";
 import { Switch } from "antd";
 import { AttendeeItem, Attendee } from "./Attendee";
+import { EditModeContext } from "../../store/edit-mode-context";
 
 enum View {
     Attendance,
@@ -15,6 +16,8 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
 }) => {
 
     const [view, setView] = useState<View>(View.Attendance)
+
+    const { editMode } = useContext(EditModeContext);
 
     const handleSwitchChange = (checked: boolean) => {
         if(checked){
@@ -50,9 +53,21 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                                 rate={tutor.rate}
                                 showRate={view === View.Pricing}
                                 type={Attendee.Tutor}
+                                newAttendee={false}
                             />
                         </li>
                     )}
+                    {editMode && 
+                        <li>
+                            <AttendeeItem
+                                name={''}
+                                rate={0}
+                                showRate={view === View.Pricing}
+                                type={Attendee.Tutor}
+                                newAttendee={true}
+                            />
+                        </li>
+                    }
                 </ul>
                 <div className={styles.subTitle}>
                     <h2>Students</h2>
@@ -66,9 +81,21 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                                 rate={student.rate}
                                 showRate={view === View.Pricing}
                                 type={Attendee.Student}
+                                newAttendee={false}
                             />
                         </li>
                     )}
+                    {editMode && 
+                        <li>
+                            <AttendeeItem
+                                name={''}
+                                rate={0}
+                                showRate={view === View.Pricing}
+                                type={Attendee.Student}
+                                newAttendee={true}
+                            />
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
