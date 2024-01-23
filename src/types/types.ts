@@ -20,7 +20,7 @@ interface Tutor {
     rate: number
 }
 
-interface Attendeees {
+export interface Attendeees {
     tutors: Tutor[],
     students: Student[]
 }

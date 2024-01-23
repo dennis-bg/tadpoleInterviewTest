@@ -4,6 +4,7 @@ import { MeetingDetails } from "../../types/types";
 import styles from './styles.module.css'
 import { MeetingInfoCard } from "../MeetingInfo";
 import { MeetingParticipants } from "../MeetingParticipants";
+
 interface MeetingModalProps {
     open: boolean,
     meetingDetails: MeetingDetails
@@ -26,7 +27,10 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                     students={meetingDetails.participants.students.length}
                     tutors={meetingDetails.participants.tutors.length}
                 />
-                <MeetingParticipants/>
+                <MeetingParticipants 
+                    students={meetingDetails.participants.students} 
+                    tutors={meetingDetails.participants.tutors}
+                />
             </div>
         </MyModal>
     )
