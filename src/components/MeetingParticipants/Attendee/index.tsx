@@ -36,7 +36,22 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
         }
         else{
             if(editMode){
-                return <RemoveSVG/>
+                if(showRate){
+                    return <div style={{width: "25%", display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                        <span>$</span>
+                        <Input
+                            value={rate}
+                            variant="borderless"
+                            size="small"
+                            // prefix="$ "
+                            // suffix=" /hr"
+                            style={{borderBottom: "1px solid #31E190", width: '30px'}}
+                        />
+                        <span>/hr</span>
+                    </div>;
+                } else {
+                    return <RemoveSVG/>
+                }
             }
             else if(showRate) {
                 return <span>$ {rate} /hr</span>;
