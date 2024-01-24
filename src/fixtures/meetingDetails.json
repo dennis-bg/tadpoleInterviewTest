@@ -7,7 +7,8 @@
         "endTime": "8:30pm",
         "endDate": "10/28",
         "repitition": "every 7 days",
-        "location": "Classroom 400, Ryder Hall, Northeastern University"
+        "location": "Classroom 400, Ryder Hall, Northeastern University",
+        "Sequence": ["m", "w", "f"]
     },
     "participants": {
         "tutors": [

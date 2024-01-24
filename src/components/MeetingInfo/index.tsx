@@ -6,6 +6,8 @@ import { QuoteSVG } from "../../svgs/quote";
 import { ClockSVG } from "../../svgs/clock";
 import { GradHatSVG } from "../../svgs/gradHat";
 import { UserSVG } from "../../svgs/user";
+import { CalendarSVG } from "../../svgs/calendar";
+import { SequenceDisplay } from "./SequenceDisplay";
 
 interface InfoCalculations {
     duration: string,
@@ -38,6 +40,19 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
                         <div>
                             <div className={styles.subject}>{subject}</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.infoRow}>
+                <CalendarSVG/>
+                <div className={styles.content}>
+                    <div className={styles.vertical}>
+                        <h4 className={styles.date}>{`${date}, ${startTime} to ${endTime}`}</h4>
+                        <p className={styles.basicInfo}>{`repeats ${repitition} until ${endDate}`}</p>
+                    </div>
+                    <div className={styles.vertical}>
+                        <h4 style={{fontSize: "12px", marginTop: '15px', marginBottom: "10px"}}>This sequence is on :</h4>
+                        <SequenceDisplay/>
                     </div>
                 </div>
             </div>

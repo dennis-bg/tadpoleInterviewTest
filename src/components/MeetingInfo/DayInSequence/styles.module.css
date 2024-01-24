@@ -1,0 +1,22 @@
+.notInSequence {
+    height: 24px;
+    width: 24px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    font-size: 10px;
+}
+
+.inSequence {
+    height: 24px;
+    width: 24px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #31E190;
+    color: white;
+    font-size: 10px;
+}
