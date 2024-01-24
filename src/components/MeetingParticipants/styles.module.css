@@ -1,5 +1,6 @@
 .participants {
     width: 34%;
+    height: 623px;
     background-color: #F9F9F9;
     border-radius: 10px;
     border: 1px solid #CECECE;
@@ -23,6 +24,10 @@
 .body {
     background-color: #F9F9F9;
     border-radius: 10px;
+    height: 501px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scrollbar-gutter: stable;
 }
 
 .body ul {
