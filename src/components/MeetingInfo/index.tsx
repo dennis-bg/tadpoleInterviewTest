@@ -68,8 +68,8 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
                         <CalendarSVG/>
                         <div className={styles.content}>
                             <div className={styles.vertical}>
-                                <h4 className={styles.date}>{`${dayjs(info.date).format('MMMM Do')}, ${info.startTime} to ${info.endTime}`}</h4>
-                                <p className={styles.basicInfo}>{`repeats ${info.repitition} until ${info.endDate}`}</p>
+                                <h4 className={styles.date}>{`${dayjs(info.date).format('MMMM Do')}, ${dayjs(info.startTime).format('h:mm a')} to ${dayjs(info.endTime).format('h:mm a')}`}</h4>
+                                <p className={styles.basicInfo}>{`repeats ${info.repitition} until ${dayjs(info.endDate).format('MM/DD')}`}</p>
                             </div>
                             <div className={styles.vertical}>
                                 <h4 style={{fontSize: "12px", marginTop: '15px', marginBottom: "10px"}}>This sequence is on :</h4>

@@ -3,9 +3,9 @@
         "title": "Meeting Title",
         "subject": "Psychology",
         "date": "2024-01-25T23:10:23.457Z",
-        "startTime": "7:30pm",
-        "endTime": "8:30pm",
-        "endDate": "10/28",
+        "startTime": "2024-01-24T06:38:38.136Z",
+        "endTime": "2024-01-24T09:38:43.537Z",
+        "endDate": "2024-10-10T04:00:00.000Z",
         "repitition": "every 7 days",
         "location": "Classroom 400, Ryder Hall, Northeastern University",
         "Sequence": ["m", "w", "f"]

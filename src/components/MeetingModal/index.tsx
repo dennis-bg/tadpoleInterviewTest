@@ -6,6 +6,7 @@ import { MeetingInfoCard } from "../MeetingInfo";
 import { MeetingParticipants } from "../MeetingParticipants";
 import { EditModeContext } from "../../store/edit-mode-context";
 import { StagedEditsContext } from "../../store/staged-edits-context";
+import dayjs, { Dayjs } from "dayjs";
 
 interface MeetingModalProps {
     open: boolean,
@@ -14,7 +15,7 @@ interface MeetingModalProps {
 
 export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails }) => {
 
-    const [editMode, setEditMode] = useState<boolean>(true);
+    const [editMode, setEditMode] = useState<boolean>(false);
     const [info, setInfo] = useState(meetingDetails.info)
     const [students, setStudents] = useState<Student[]>(meetingDetails.participants.students);
     const [tutors, setTutors] = useState<IAttendee[]>(meetingDetails.participants.tutors);
@@ -22,8 +23,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [stagedTitle, setStagedTitle] = useState<string>(meetingDetails.info.title);
     const [stagedSubject, setStagedSubject] = useState<string>(meetingDetails.info.subject);
     const [stagedDate, setStagedDate] = useState<string>(meetingDetails.info.date);
-    const [stagedStartTime, setStagedStartTime] = useState<string>(meetingDetails.info.startTime);
-    const [stagedEndTime, setStagedEndTime] = useState<string>(meetingDetails.info.endTime);
+    const [stagedStartTime, setStagedStartTime] = useState<Dayjs>(dayjs(meetingDetails.info.startTime));
+    const [stagedEndTime, setStagedEndTime] = useState<Dayjs>(dayjs(meetingDetails.info.endTime));
     const [stagedEndDate, setStagedEndDate] = useState<string>(meetingDetails.info.endDate);
     const [stagedLocation, setStagedLocation] = useState<string>(meetingDetails.info.location);
 
@@ -39,11 +40,11 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         setStagedDate(date);
     };
       
-    const handleStagedStartTimeChange = (startTime: string) => {
+    const handleStagedStartTimeChange = (startTime: Dayjs) => {
         setStagedStartTime(startTime);
     };
       
-    const handleStagedEndTimeChange = (endTime: string) => {
+    const handleStagedEndTimeChange = (endTime: Dayjs) => {
         setStagedEndTime(endTime);
     };
       

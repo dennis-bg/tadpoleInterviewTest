@@ -9,8 +9,8 @@ export const EditDetails = () => {
     const {data, handlers} = useContext(StagedEditsContext);
 
     const handleTimeChange = (value: any) => {
-        handlers.handleStagedStartTimeChange(dayjs(value[0]).format('h:mm a'))
-        handlers.handleStagedEndTimeChange(dayjs(value[1]).format('h:mm a'))
+        handlers.handleStagedStartTimeChange(dayjs(value[0]))
+        handlers.handleStagedEndTimeChange(dayjs(value[1]))
     };
 
     const handleDateChange = (date: any) => {
@@ -18,7 +18,7 @@ export const EditDetails = () => {
     }
 
     const handleEndDateChange = (date: any) => {
-        handlers.handleStagedEndTimeChange(date)
+        handlers.handleStagedEndDateChange(date)
     }
 
     const handleLocationChange = (e: { target: { value: string; }; }) => {
@@ -34,7 +34,9 @@ export const EditDetails = () => {
                 </div>
                 <div className={styles.group}>
                     <p>Time</p>
-                    <TimePicker.RangePicker variant="borderless"  onChange={handleTimeChange} format="h:mm a"/>
+                    <TimePicker.RangePicker variant="borderless" 
+                        value={[dayjs(data.stagedStartTime), dayjs(data.stagedEndTime)]} 
+                        onChange={handleTimeChange} format="h:mm a"/>
                 </div>
                 <div className={styles.group}>
                     <p>Repeats</p>
@@ -42,7 +44,7 @@ export const EditDetails = () => {
                 </div>
                 <div className={styles.group}>
                     <p>Ends on or Before</p>
-                    <DatePicker variant="borderless" onChange={handleEndDateChange}/>
+                    <DatePicker variant="borderless"value={dayjs(data.stagedEndDate)} onChange={handleEndDateChange} format="ddd, MMM Do"/>
                 </div>
             </div>
             <div className={styles.group}>
