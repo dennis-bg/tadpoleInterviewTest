@@ -28,6 +28,29 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [stagedEndDate, setStagedEndDate] = useState<string>(meetingDetails.info.endDate);
     const [stagedLocation, setStagedLocation] = useState<string>(meetingDetails.info.location);
 
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
+    }
+
+    const saveChanges = () => {
+        // setInfo({
+        //     title: stagedTitle,
+        //     subject: stagedSubject,
+        //     date: stagedDate,
+        //     startTime: stagedStartTime,
+        //     endTime: stagedEndTime,
+        //     endDate: stagedEndDate,
+        //     repitition: '',
+        //     location: stagedLocation
+        //     // sequence: stagedSequence
+        // })
+        toggleEditMode();
+    }
+
+    const cancelChanges = () => {
+        toggleEditMode();
+    }
+
     const handleTitleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setStagedTitle(e.target.value);
     }
@@ -79,6 +102,10 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         toggleEditMode: () => setEditMode(!editMode)
     }
 
+    const hours = stagedEndTime.diff(stagedStartTime, 'hour');
+    const minutes = stagedEndTime.diff(stagedStartTime, 'minute') % 60;
+    const duration = `${hours > 0 ? `${hours} hours ` : ''}${minutes > 0 ? `${minutes} minutes` : ''}`;
+
     return (
         <MyModal>
             <EditModeContext.Provider value={editCtxValue}>
@@ -89,8 +116,10 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                             handleTitleChange={handleTitleChange}
                             subject={stagedSubject}
                             handleSubjectChange={handleSubjectChange}
-                            info={info}
-                            duration={"40 minutes"}
+                            toggleEditMode={toggleEditMode}
+                            saveChanges={saveChanges}
+                            cancelChanges={cancelChanges}
+                            duration={duration}
                             students={meetingDetails.participants.students.length}
                             tutors={meetingDetails.participants.tutors.length}
                         />
