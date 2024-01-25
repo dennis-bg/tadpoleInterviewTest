@@ -159,8 +159,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                             saveChanges={saveChanges}
                             cancelChanges={cancelChanges}
                             duration={duration}
-                            students={meetingDetails.participants.students.length}
-                            tutors={meetingDetails.participants.tutors.length}
+                            students={students.length}
+                            tutors={tutors.length}
                         />
                     </StagedEditsContext.Provider>
                     <MeetingParticipants 

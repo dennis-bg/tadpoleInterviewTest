@@ -17,7 +17,7 @@ export const SequenceDisplay = () => {
     return (
         <div className={styles.display}>
             {Object.entries(sequence).map(([key, value]) => 
-                <DayInSequence inSequence={value} display={key}/>
+                <DayInSequence inSequence={value} display={key} key={key}/>
             )}
         </div>
     )
