@@ -33,21 +33,28 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     }
 
     const saveChanges = () => {
-        // setInfo({
-        //     title: stagedTitle,
-        //     subject: stagedSubject,
-        //     date: stagedDate,
-        //     startTime: stagedStartTime,
-        //     endTime: stagedEndTime,
-        //     endDate: stagedEndDate,
-        //     repitition: '',
-        //     location: stagedLocation
-        //     // sequence: stagedSequence
-        // })
+        setInfo({
+            title: stagedTitle,
+            subject: stagedSubject,
+            date: stagedDate,
+            startTime: stagedStartTime,
+            endTime: stagedEndTime,
+            endDate: stagedEndDate,
+            repitition: 'every 7 days',
+            location: stagedLocation
+            // sequence: stagedSequence
+        })
         toggleEditMode();
     }
 
     const cancelChanges = () => {
+        setStagedTitle(info.title);
+        setStagedSubject(info.subject);
+        setStagedDate(info.date);
+        setStagedStartTime(info.startTime);
+        setStagedEndTime(info.endTime);
+        setStagedEndDate(info.endDate);
+        setStagedLocation(info.location)
         toggleEditMode();
     }
 
@@ -102,8 +109,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         toggleEditMode: () => setEditMode(!editMode)
     }
 
-    const hours = stagedEndTime.diff(stagedStartTime, 'hour');
-    const minutes = stagedEndTime.diff(stagedStartTime, 'minute') % 60;
+    const hours = dayjs(stagedEndTime).diff(dayjs(stagedStartTime), 'hour');
+    const minutes = dayjs(stagedEndTime).diff(dayjs(stagedStartTime), 'minute') % 60;
     const duration = `${hours > 0 ? `${hours} hours ` : ''}${minutes > 0 ? `${minutes} minutes` : ''}`;
 
     return (

@@ -2,8 +2,8 @@ export interface MeetingInfo {
     title: string,
     subject: string,
     date: string,
-    startTime: string,
-    endTime: string,
+    startTime: any,
+    endTime: any,
     endDate: string,
     repitition: string,
     location: string
