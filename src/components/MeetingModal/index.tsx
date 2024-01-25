@@ -7,6 +7,7 @@ import { MeetingParticipants } from "../MeetingParticipants";
 import { EditModeContext } from "../../store/edit-mode-context";
 import { StagedEditsContext } from "../../store/staged-edits-context";
 import dayjs, { Dayjs } from "dayjs";
+import { Attendee } from "../MeetingParticipants/Attendee";
 
 interface MeetingModalProps {
     open: boolean,
@@ -38,6 +39,22 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
             rate: 0
         }
         setStagedStudents([...stagedStudents, newStudent]);
+    }
+
+    const editRate = (attendee: string, rate: number, type: Attendee) => {
+        const oldItem = type === Attendee.Student ? students.find(student => student.name === attendee) : tutors.find(tutor => tutor.name === attendee);
+        const newItem = {
+            ...oldItem,
+            name: attendee,
+            rate: rate
+        }
+        if(type === Attendee.Student){
+            const newArray = stagedStudents.map(student => student.name === attendee ? newItem as Student : student)
+            setStagedStudents(newArray);
+        } else {
+            const newArray = stagedTutors.map(tutor => tutor.name === attendee ? newItem : tutor)
+            setStagedTutors(newArray);
+        }
     }
 
     const removeStudent = (studentName: string) => {
@@ -138,7 +155,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
 
     const editCtxValue = {
         editMode,
-        toggleEditMode: () => setEditMode(!editMode)
+        toggleEditMode,
+        editRate
     }
 
     const hours = dayjs(stagedEndTime).diff(dayjs(stagedStartTime), 'hour');

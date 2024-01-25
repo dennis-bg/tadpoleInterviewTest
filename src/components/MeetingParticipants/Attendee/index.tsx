@@ -34,7 +34,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
     handleSaveAttendee
 }) => {
 
-    const { editMode } = useContext(EditModeContext); 
+    const { editMode, toggleEditMode, editRate } = useContext(EditModeContext); 
 
     const names = name.split(' ');
 
@@ -51,7 +51,9 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
                             value={rate}
                             variant="borderless"
                             size="small"
+                            defaultValue={0}
                             style={{borderBottom: "1px solid #31E190", width: '30px'}}
+                            onChange={(e) => editRate(name, parseInt(e.target.value), type)}
                         />
                         <span>/hr</span>
                     </div>;
