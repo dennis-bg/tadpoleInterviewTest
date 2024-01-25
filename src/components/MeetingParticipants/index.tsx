@@ -11,41 +11,54 @@ enum View {
     Pricing
 }
 
-export const MeetingParticipants: React.FC<Attendeees> = ({
+interface MeetingParticipantsProps {
+    students: Student[];
+    tutors: IAttendee[];
+    addStudent: (student: string) => void;
+    removeStudent: (student: string) => void;
+    addTutor: (tutor: string) => void;
+    removeTutor: (tutor: string) => void;
+}
+
+export const MeetingParticipants: React.FC<MeetingParticipantsProps> = ({
     students,
-    tutors
+    tutors,
+    addStudent,
+    removeStudent,
+    addTutor,
+    removeTutor
 }) => {
     
     const { editMode } = useContext(EditModeContext);
 
     const [view, setView] = useState<View>(View.Attendance);
-    const [stagedStudents, setStagedStudents] = useState<Student[]>(students);
-    const [stagedTutors, setStagedTutors] = useState<IAttendee[]>(tutors);
+    // const [stagedStudents, setStagedStudents] = useState<Student[]>(students);
+    // const [stagedTutors, setStagedTutors] = useState<IAttendee[]>(tutors);
 
-    const addStudent = (student: string) => {
-        const newStudent = {
-            name: student,
-            attendance: false,
-            rate: 0
-        }
-        setStagedStudents([...stagedStudents, newStudent]);
-    }
+    // const addStudent = (student: string) => {
+    //     const newStudent = {
+    //         name: student,
+    //         attendance: false,
+    //         rate: 0
+    //     }
+    //     setStagedStudents([...stagedStudents, newStudent]);
+    // }
 
-    const removeStudent = (studentName: string) => {
-        setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
-    }
+    // const removeStudent = (studentName: string) => {
+    //     setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
+    // }
 
-    const addTutor = (tutor: string) => {
-        const newTutor = {
-            name: tutor,
-            rate: 0
-        }
-        setStagedTutors([...stagedTutors, newTutor])
-    }
+    // const addTutor = (tutor: string) => {
+    //     const newTutor = {
+    //         name: tutor,
+    //         rate: 0
+    //     }
+    //     setStagedTutors([...stagedTutors, newTutor])
+    // }
 
-    const removeTutor = (tutorName: string) => {
-        setStagedTutors(stagedTutors.filter(tutor => tutor.name !== tutorName))
-    }
+    // const removeTutor = (tutorName: string) => {
+    //     setStagedTutors(stagedTutors.filter(tutor => tutor.name !== tutorName))
+    // }
 
     const handleSwitchChange = (checked: boolean) => {
         if(checked){
@@ -73,7 +86,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     {view === View.Pricing && <p>Recieving</p>}
                 </div>
                 <ul>
-                    {stagedTutors.map(tutor => 
+                    {tutors.map(tutor => 
                         <li key={tutor.name}>
                             <AttendeeItem
                                 name={tutor.name}
@@ -94,7 +107,7 @@ export const MeetingParticipants: React.FC<Attendeees> = ({
                     <p>{view === View.Attendance ? 'Attendance' : 'Paying'}</p>
                 </div>
                 <ul>
-                    {stagedStudents.map(student => 
+                    {students.map(student => 
                         <li key={student.name}>
                             <AttendeeItem
                                 name={student.name}

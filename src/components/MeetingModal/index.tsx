@@ -20,6 +20,9 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [students, setStudents] = useState<Student[]>(meetingDetails.participants.students);
     const [tutors, setTutors] = useState<IAttendee[]>(meetingDetails.participants.tutors);
 
+    const [stagedStudents, setStagedStudents] = useState<Student[]>(students);
+    const [stagedTutors, setStagedTutors] = useState<IAttendee[]>(tutors);
+
     const [stagedTitle, setStagedTitle] = useState<string>(meetingDetails.info.title);
     const [stagedSubject, setStagedSubject] = useState<string>(meetingDetails.info.subject);
     const [stagedDate, setStagedDate] = useState<string>(meetingDetails.info.date);
@@ -27,6 +30,31 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [stagedEndTime, setStagedEndTime] = useState<Dayjs>(dayjs(meetingDetails.info.endTime));
     const [stagedEndDate, setStagedEndDate] = useState<string>(meetingDetails.info.endDate);
     const [stagedLocation, setStagedLocation] = useState<string>(meetingDetails.info.location);
+
+    const addStudent = (student: string) => {
+        const newStudent = {
+            name: student,
+            attendance: false,
+            rate: 0
+        }
+        setStagedStudents([...stagedStudents, newStudent]);
+    }
+
+    const removeStudent = (studentName: string) => {
+        setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
+    }
+
+    const addTutor = (tutor: string) => {
+        const newTutor = {
+            name: tutor,
+            rate: 0
+        }
+        setStagedTutors([...stagedTutors, newTutor])
+    }
+
+    const removeTutor = (tutorName: string) => {
+        setStagedTutors(stagedTutors.filter(tutor => tutor.name !== tutorName))
+    }
 
     const toggleEditMode = () => {
         setEditMode(!editMode);
@@ -44,6 +72,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
             location: stagedLocation
             // sequence: stagedSequence
         })
+        setStudents(stagedStudents);
+        setTutors(stagedTutors);
         toggleEditMode();
     }
 
@@ -55,6 +85,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         setStagedEndTime(info.endTime);
         setStagedEndDate(info.endDate);
         setStagedLocation(info.location)
+        setStagedStudents(students);
+        setStagedTutors(tutors);
         toggleEditMode();
     }
 
@@ -132,8 +164,12 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                         />
                     </StagedEditsContext.Provider>
                     <MeetingParticipants 
-                        students={students} 
-                        tutors={tutors}
+                        students={stagedStudents} 
+                        tutors={stagedTutors}
+                        addStudent={addStudent}
+                        removeStudent={removeStudent}
+                        addTutor={addTutor}
+                        removeTutor={removeTutor}
                     />
                 </div>
             </EditModeContext.Provider>
