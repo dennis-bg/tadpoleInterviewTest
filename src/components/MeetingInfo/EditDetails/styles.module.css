@@ -1,0 +1,31 @@
+.body{
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dateDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+}
+
+.group p {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.dateDetails .group {
+    width: 20%;
+    border-bottom: 1px solid #31E190;
+}
+
+.dateDetails .group:nth-child(2) {
+    width: 35%;
+}

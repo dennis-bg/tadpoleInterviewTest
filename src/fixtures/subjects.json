@@ -1,0 +1,22 @@
+[
+    { "value": "Mathematics", "label": "Mathematics" },
+    { "value": "Physics", "label": "Physics" },
+    { "value": "Chemistry", "label": "Chemistry" },
+    { "value": "Biology", "label": "Biology" },
+    { "value": "English", "label": "English" },
+    { "value": "History", "label": "History" },
+    { "value": "Geography", "label": "Geography" },
+    { "value": "Social Studies", "label": "Social Studies" },
+    { "value": "Computer Science", "label": "Computer Science" },
+    { "value": "Programming", "label": "Programming" },
+    { "value": "Economics", "label": "Economics" },
+    { "value": "Business Studies", "label": "Business Studies" },
+    { "value": "Psychology", "label": "Psychology" },
+    { "value": "Sociology", "label": "Sociology" },
+    { "value": "Foreign Languages", "label": "Foreign Languages" },
+    { "value": "Music", "label": "Music" },
+    { "value": "Art", "label": "Art" },
+    { "value": "Physical Education", "label": "Physical Education" },
+    { "value": "Health Education", "label": "Health Education" }
+  ]
+  
