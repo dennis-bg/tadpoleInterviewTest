@@ -6,7 +6,18 @@ export interface MeetingInfo {
     endTime: any,
     endDate: string,
     repitition: string,
-    location: string
+    location: string,
+    sequence: Sequence;
+}
+
+export interface Sequence {
+        S: boolean,
+        M: boolean,
+        T: boolean,
+        W: boolean,
+        Th: boolean,
+        F: boolean,
+        Sa: boolean
 }
 
 

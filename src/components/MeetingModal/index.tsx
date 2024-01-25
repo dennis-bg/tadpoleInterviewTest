@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MyModal } from "../common/MyModal";
-import { IAttendee, MeetingDetails, Student } from "../../types/types";
+import { IAttendee, MeetingDetails, Sequence, Student } from "../../types/types";
 import styles from './styles.module.css'
 import { MeetingInfoCard } from "../MeetingInfo";
 import { MeetingParticipants } from "../MeetingParticipants";
@@ -31,6 +31,7 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [stagedEndTime, setStagedEndTime] = useState<Dayjs>(dayjs(meetingDetails.info.endTime));
     const [stagedEndDate, setStagedEndDate] = useState<string>(meetingDetails.info.endDate);
     const [stagedLocation, setStagedLocation] = useState<string>(meetingDetails.info.location);
+    const [stagedSequence, setStagedSequence] = useState<Sequence>(meetingDetails.info.sequence)
 
     const addStudent = (student: string) => {
         const newStudent = {
@@ -86,8 +87,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
             endTime: stagedEndTime,
             endDate: stagedEndDate,
             repitition: 'every 7 days',
-            location: stagedLocation
-            // sequence: stagedSequence
+            location: stagedLocation,
+            sequence: stagedSequence
         })
         setStudents(stagedStudents);
         setTutors(stagedTutors);
@@ -179,6 +180,7 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                             duration={duration}
                             students={students.length}
                             tutors={tutors.length}
+                            sequence={stagedSequence}
                         />
                     </StagedEditsContext.Provider>
                     <MeetingParticipants 

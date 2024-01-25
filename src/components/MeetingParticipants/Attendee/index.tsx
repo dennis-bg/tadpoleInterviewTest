@@ -34,7 +34,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
     handleSaveAttendee
 }) => {
 
-    const { editMode, toggleEditMode, editRate } = useContext(EditModeContext); 
+    const { editMode, editRate } = useContext(EditModeContext); 
 
     const names = name.split(' ');
 

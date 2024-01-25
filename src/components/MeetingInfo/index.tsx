@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from './styles.module.css'
-import { MeetingInfo } from "../../types/types";
+import { MeetingInfo, Sequence } from "../../types/types";
 import { LocationSVG } from "../../svgs/location";
 import { QuoteSVG } from "../../svgs/quote";
 import { ClockSVG } from "../../svgs/clock";
@@ -25,7 +25,8 @@ interface MeetingInfoProps {
     handleSubjectChange: (subject: string) => void,
     duration: string,
     students: number,
-    tutors: number
+    tutors: number,
+    sequence: Sequence
 }
 
 export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
@@ -38,7 +39,8 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
     handleSubjectChange,
     duration,
     students,
-    tutors
+    tutors,
+    sequence
 }) => {
 
     const { editMode } = useContext(EditModeContext);
@@ -80,7 +82,7 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
                                 </div>
                                 <div className={styles.vertical}>
                                     <h4 style={{fontSize: "12px", marginTop: '15px', marginBottom: "10px"}}>This sequence is on :</h4>
-                                    <SequenceDisplay/>
+                                    <SequenceDisplay sequence={sequence}/>
                                 </div>
                             </div>
                         </div>
