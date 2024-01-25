@@ -32,33 +32,6 @@ export const MeetingParticipants: React.FC<MeetingParticipantsProps> = ({
     const { editMode } = useContext(EditModeContext);
 
     const [view, setView] = useState<View>(View.Attendance);
-    // const [stagedStudents, setStagedStudents] = useState<Student[]>(students);
-    // const [stagedTutors, setStagedTutors] = useState<IAttendee[]>(tutors);
-
-    // const addStudent = (student: string) => {
-    //     const newStudent = {
-    //         name: student,
-    //         attendance: false,
-    //         rate: 0
-    //     }
-    //     setStagedStudents([...stagedStudents, newStudent]);
-    // }
-
-    // const removeStudent = (studentName: string) => {
-    //     setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
-    // }
-
-    // const addTutor = (tutor: string) => {
-    //     const newTutor = {
-    //         name: tutor,
-    //         rate: 0
-    //     }
-    //     setStagedTutors([...stagedTutors, newTutor])
-    // }
-
-    // const removeTutor = (tutorName: string) => {
-    //     setStagedTutors(stagedTutors.filter(tutor => tutor.name !== tutorName))
-    // }
 
     const handleSwitchChange = (checked: boolean) => {
         if(checked){
