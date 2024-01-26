@@ -9,12 +9,12 @@
         "repitition": "every 7 days",
         "location": "Classroom 400, Ryder Hall, Northeastern University",
         "sequence": {
-            "S": true,
-            "M": true,
+            "S": false,
+            "M": false,
             "T": false,
             "W": false,
-            "Th": false,
-            "F": true,
+            "Th": true,
+            "F": false,
             "Sa": false
         }
     },

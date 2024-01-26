@@ -79,6 +79,99 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         setEditMode(!editMode);
     }
 
+    const handleTitleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
+        setStagedTitle(e.target.value);
+    }
+
+    const handleSubjectChange = (subject: string) => {
+        setStagedSubject(subject);
+    }
+
+    const handleStagedDateChange = (date: string) => {
+        const dictionary = {
+            Sun: 'S',
+            Mon: 'M',
+            Tue: 'T',
+            Wed: 'W',
+            Thu: 'Th',
+            Fri: 'F',
+            Sat: 'Sa'
+        }
+
+        const newSequence = {
+            S: false,
+            M: false,
+            T: false,
+            W: false,
+            Th: false,
+            F: false,
+            Sa: false,
+        }
+
+        if(stagedRepetition === 'every 7 days'){
+            const day = dayjs(date).format('ddd');
+            const index = dictionary[day as keyof typeof dictionary];
+            newSequence[index as keyof typeof newSequence] = true;
+            setStagedSequence(newSequence);
+        }
+        setStagedDate(date);
+    };
+      
+    const handleStagedStartTimeChange = (startTime: Dayjs) => {
+        setStagedStartTime(startTime);
+    };
+      
+    const handleStagedEndTimeChange = (endTime: Dayjs) => {
+        setStagedEndTime(endTime);
+    };
+      
+    const handleStagedEndDateChange = (endDate: string) => {
+        setStagedEndDate(endDate);
+    };
+      
+    const handleStagedLocationChange = (location: string) => {
+        setStagedLocation(location);
+    };
+
+    const handleStagedRepitionChange = (repetition: string) => {
+
+        const dictionary = {
+            Sun: 'S',
+            Mon: 'M',
+            Tue: 'T',
+            Wed: 'W',
+            Thu: 'Th',
+            Fri: 'F',
+            Sat: 'Sa'
+        }
+
+        const newSequence = {
+            S: false,
+            M: false,
+            T: false,
+            W: false,
+            Th: false,
+            F: false,
+            Sa: false,
+        }
+
+        if(repetition === 'every 7 days'){
+            const day = dayjs(stagedDate).format('ddd');
+            const index = dictionary[day as keyof typeof dictionary];
+            newSequence[index as keyof typeof newSequence] = true;
+        } else {
+            const days = repetition.split(', ');
+            days.forEach(day => {
+                const index = dictionary[day as keyof typeof dictionary];
+                newSequence[index as keyof typeof newSequence] = true;
+            })
+        }
+        
+        setStagedSequence(newSequence)
+        setStagedRepitition(repetition)
+    }
+
+    
     const saveChanges = () => {
         setInfo({
             title: stagedTitle,
@@ -109,38 +202,6 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         setStagedStudents(students);
         setStagedTutors(tutors);
         toggleEditMode();
-    }
-
-    const handleTitleChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
-        setStagedTitle(e.target.value);
-    }
-
-    const handleSubjectChange = (subject: string) => {
-        setStagedSubject(subject);
-    }
-
-    const handleStagedDateChange = (date: string) => {
-        setStagedDate(date);
-    };
-      
-    const handleStagedStartTimeChange = (startTime: Dayjs) => {
-        setStagedStartTime(startTime);
-    };
-      
-    const handleStagedEndTimeChange = (endTime: Dayjs) => {
-        setStagedEndTime(endTime);
-    };
-      
-    const handleStagedEndDateChange = (endDate: string) => {
-        setStagedEndDate(endDate);
-    };
-      
-    const handleStagedLocationChange = (location: string) => {
-        setStagedLocation(location);
-    };
-
-    const handleStagedRepitionChange = (repition: string) => {
-        setStagedRepitition(repition)
     }
       
 

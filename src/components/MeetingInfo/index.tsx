@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styles from './styles.module.css'
-import { MeetingInfo, Sequence } from "../../types/types";
+import { Sequence } from "../../types/types";
 import { LocationSVG } from "../../svgs/location";
 import { QuoteSVG } from "../../svgs/quote";
 import { ClockSVG } from "../../svgs/clock";
