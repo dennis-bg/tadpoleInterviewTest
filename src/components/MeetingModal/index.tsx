@@ -31,7 +31,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const [stagedEndTime, setStagedEndTime] = useState<Dayjs>(dayjs(meetingDetails.info.endTime));
     const [stagedEndDate, setStagedEndDate] = useState<string>(meetingDetails.info.endDate);
     const [stagedLocation, setStagedLocation] = useState<string>(meetingDetails.info.location);
-    const [stagedSequence, setStagedSequence] = useState<Sequence>(meetingDetails.info.sequence)
+    const [stagedSequence, setStagedSequence] = useState<Sequence>(meetingDetails.info.sequence);
+    const [stagedRepetition, setStagedRepitition] = useState<string>(meetingDetails.info.repitition);
 
     const addStudent = (student: string) => {
         const newStudent = {
@@ -86,7 +87,7 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
             startTime: stagedStartTime,
             endTime: stagedEndTime,
             endDate: stagedEndDate,
-            repitition: 'every 7 days',
+            repitition: stagedRepetition,
             location: stagedLocation,
             sequence: stagedSequence
         })
@@ -102,7 +103,9 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         setStagedStartTime(info.startTime);
         setStagedEndTime(info.endTime);
         setStagedEndDate(info.endDate);
-        setStagedLocation(info.location)
+        setStagedLocation(info.location);
+        setStagedSequence(info.sequence);
+        setStagedRepitition(info.repitition);
         setStagedStudents(students);
         setStagedTutors(tutors);
         toggleEditMode();
@@ -135,6 +138,10 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const handleStagedLocationChange = (location: string) => {
         setStagedLocation(location);
     };
+
+    const handleStagedRepitionChange = (repition: string) => {
+        setStagedRepitition(repition)
+    }
       
 
     const stagedCtxValue = {
@@ -143,14 +150,16 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
             stagedStartTime,
             stagedEndTime,
             stagedEndDate,
-            stagedLocation
+            stagedLocation,
+            stagedRepetition
         },
         handlers: {
             handleStagedDateChange,
             handleStagedStartTimeChange,
             handleStagedEndTimeChange,
             handleStagedEndDateChange,
-            handleStagedLocationChange
+            handleStagedLocationChange,
+            handleStagedRepitionChange
         }
     }
 
@@ -181,6 +190,7 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
                             students={students.length}
                             tutors={tutors.length}
                             sequence={stagedSequence}
+                            repetition={stagedRepetition}
                         />
                     </StagedEditsContext.Provider>
                     <MeetingParticipants 

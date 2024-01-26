@@ -40,7 +40,18 @@ export const EditDetails = () => {
                 </div>
                 <div className={styles.group}>
                     <p>Repeats</p>
-                    <Select variant="borderless" onChange={(e) => console.log(e)}/>
+                    <Select 
+                        variant="borderless"
+                        onChange={handlers.handleStagedRepitionChange}
+                        defaultValue={'every 7 days'}
+                        value={data.stagedRepetition}
+                        options={[
+                            { value: 'every 7 days', label: 'every 7 days' },
+                            { value: 'Mon, Wed, Fri', label: 'Mon, Wed, Fri' },
+                            { value: 'Tue, Thu', label: 'Tue, Thu' },
+                            { value: 'Sat, Sun', label: 'Sat, Sun' },
+                          ]}
+                    />
                 </div>
                 <div className={styles.group}>
                     <p>Ends on or Before</p>

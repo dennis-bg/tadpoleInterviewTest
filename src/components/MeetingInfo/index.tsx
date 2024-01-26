@@ -26,7 +26,8 @@ interface MeetingInfoProps {
     duration: string,
     students: number,
     tutors: number,
-    sequence: Sequence
+    sequence: Sequence,
+    repetition: string
 }
 
 export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
@@ -40,7 +41,8 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
     duration,
     students,
     tutors,
-    sequence
+    sequence,
+    repetition
 }) => {
 
     const { editMode } = useContext(EditModeContext);
@@ -78,7 +80,7 @@ export const MeetingInfoCard:React.FC<MeetingInfoProps> = ({
                             <div className={styles.content}>
                                 <div className={styles.vertical}>
                                     <h4 className={styles.date}>{`${dayjs(data.stagedDate).format('MMMM Do')}, ${dayjs(data.stagedStartTime).format('h:mm a')} to ${dayjs(data.stagedEndTime).format('h:mm a')}`}</h4>
-                                    <p className={styles.basicInfo}>{`repeats ${'every 7 days'} until ${dayjs(data.stagedEndDate).format('MM/DD')}`}</p>
+                                    <p className={styles.basicInfo}>{`repeats ${repetition} until ${dayjs(data.stagedEndDate).format('MM/DD')}`}</p>
                                 </div>
                                 <div className={styles.vertical}>
                                     <h4 style={{fontSize: "12px", marginTop: '15px', marginBottom: "10px"}}>This sequence is on :</h4>

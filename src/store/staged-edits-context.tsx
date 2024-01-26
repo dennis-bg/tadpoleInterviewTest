@@ -8,6 +8,7 @@ export const StagedEditsContext = createContext({
         stagedEndTime: dayjs(),
         stagedEndDate: '',
         stagedLocation: '',
+        stagedRepetition: '',
     },
     handlers: {
         handleStagedDateChange: (date: string) => {},
@@ -15,5 +16,6 @@ export const StagedEditsContext = createContext({
         handleStagedEndTimeChange: (endTime: Dayjs) => {},
         handleStagedEndDateChange: (endDate: string) => {},
         handleStagedLocationChange: (location: string) => {},
+        handleStagedRepitionChange: (repition: string) => {}
     }
 })
