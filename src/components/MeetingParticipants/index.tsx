@@ -67,8 +67,8 @@ export const MeetingParticipants: React.FC<MeetingParticipantsProps> = ({
                                 showRate={view === View.Pricing}
                                 type={Attendee.Tutor}
                                 newAttendee={false}
-                                removeAttendee={removeTutor}
-                            />
+                                removeAttendee={removeTutor} 
+                                attendance={false}                            />
                         </li>
                     )}
                     {editMode && view === View.Attendance &&
@@ -89,6 +89,7 @@ export const MeetingParticipants: React.FC<MeetingParticipantsProps> = ({
                                 type={Attendee.Student}
                                 newAttendee={false}
                                 removeAttendee={removeStudent}
+                                attendance={student.attendance}
                             />
                         </li>
                     )}

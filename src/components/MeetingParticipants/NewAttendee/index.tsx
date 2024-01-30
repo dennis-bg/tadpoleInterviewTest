@@ -30,6 +30,7 @@ export const NewAttendee: React.FC<NewAttendeeProps> = ({ type, addAttendee }) =
                 newName={newName}
                 handleNameChange={handleNameChange}
                 handleSaveAttendee={handleSaveAttendee}
+                attendance={false}            
             />
         </li>
     )

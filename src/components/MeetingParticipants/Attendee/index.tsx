@@ -20,10 +20,12 @@ interface AttendeeProps {
     newName?: string;
     handleNameChange?: (e: { target: { value: React.SetStateAction<string>; }; }) => void;
     handleSaveAttendee?: () => void;
+    attendance: boolean;
 }
 
 export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({ 
     name, 
+    attendance,
     rate, 
     showRate,
     type,
@@ -34,7 +36,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
     handleSaveAttendee
 }) => {
 
-    const { editMode, editRate } = useContext(EditModeContext); 
+    const { editMode, editRate, toggleAttendance } = useContext(EditModeContext); 
 
     const names = name.split(' ');
 
@@ -65,7 +67,7 @@ export const AttendeeItem: React.FC<IAttendee & AttendeeProps> = ({
                 return <span>$ {rate} /hr</span>;
             } else {
                 if(type === Attendee.Student){
-                    return <AttendenceSVG/>
+                    return <div onClick={() => toggleAttendance(name)}><AttendenceSVG attended={attendance}/></div>
                 } else {
                     return null;
                 }

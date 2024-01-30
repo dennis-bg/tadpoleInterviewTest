@@ -59,6 +59,16 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
         }
     }
 
+    const toggleAttendance = (student: string) => {
+        const oldItem = stagedStudents.find(s => s.name === student);
+        const newItem = {
+            ...oldItem,
+            attendance: !oldItem?.attendance
+        }
+        const newArray = stagedStudents.map(s => s.name === student ? newItem as Student : s);
+        setStagedStudents(newArray);
+    }
+
     const removeStudent = (studentName: string) => {
         setStagedStudents(stagedStudents.filter(student => student.name !== studentName))
     }
@@ -227,7 +237,8 @@ export const MeetingModal: React.FC<MeetingModalProps> = ({ open, meetingDetails
     const editCtxValue = {
         editMode,
         toggleEditMode,
-        editRate
+        editRate,
+        toggleAttendance
     }
 
     const hours = dayjs(stagedEndTime).diff(dayjs(stagedStartTime), 'hour');
